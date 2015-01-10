@@ -64,10 +64,21 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+	return Response::make("Applicatie is in onderhoud.", 503);
+});
+
+
+/*
+ * 404 handler
+ *
+ */
+
+App::missing(function(){
+    return Redirect::to('/');
 });
 
 /*
+ *
 |--------------------------------------------------------------------------
 | Require The Filters File
 |--------------------------------------------------------------------------
