@@ -16,5 +16,9 @@ Class AuthController extends BaseController{
         return 'Handling login';
     }
 
+    public function getLogout(){
+    	User::logout();
+    	return Redirect::to('/');
+    }
 
 }

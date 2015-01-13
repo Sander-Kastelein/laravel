@@ -34,3 +34,4 @@ Route::get('/',['before'=>'noauth','uses'=>function(){
 
 Route::get('/login',['before'=>'noauth','uses'=>'AuthController@getLogin']);
 Route::post('/login',['before'=>'noauth|csrf','uses'=>'AuthController@postLogin']);
+Route::get('/logout',['before'=>'auth','users'=>'AuthController@getLogout']);
