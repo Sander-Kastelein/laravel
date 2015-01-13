@@ -7,25 +7,24 @@ class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
-	 * @param Blueprint $table
 	 * @return void
 	 */
-	public function up(Blueprint $table)
+	public function up()
 	{
-		$table->increments('id');
-        $table->string('email')->unique();
-        $table->string('password');
-        $table->boolean('is_teacher');
-
-        $table->timestamps();
+		Schema::create('users', function(Blueprint $table){
+			$table->increments('id');
+	        $table->string('email')->unique();
+	        $table->string('password');
+	        $table->boolean('is_teacher');
+	        $table->timestamps();
+	    });
 	}
 
 	/**
 	 * Reverse the migrations.
-	 * @param Blueprint $table
 	 * @return void
 	 */
-	public function down(Blueprint $table)
+	public function down()
 	{
         Schema::drop('users');
     }

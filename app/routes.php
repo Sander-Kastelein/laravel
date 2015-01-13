@@ -29,7 +29,7 @@ Route::group(['namespace'=>'teacher','before' => 'auth|teacher'], function()
  */
 
 Route::get('/',['before'=>'noauth','uses'=>function(){
-    return Redirect::action('getLogin');
+    return Redirect::action('AuthController@getLogin');
 }]);
 
 Route::get('/login',['before'=>'noauth','uses'=>'AuthController@getLogin']);

@@ -70,4 +70,9 @@ require $framework.'/Illuminate/Foundation/start.php';
 |
 */
 
+$env = $app->detectEnvironment(function()
+{
+    return 'development';
+});
+
 return $app;
