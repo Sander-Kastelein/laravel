@@ -13,7 +13,9 @@
 
 App::before(function($request)
 {
-	//
+	if(!Auth::guest()){
+		View::share('user',Auth::user());
+	}
 });
 
 
