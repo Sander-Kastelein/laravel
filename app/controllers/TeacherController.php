@@ -9,7 +9,7 @@
 Class TeacherController extends BaseController{
 
     public function getDashboard(){
-        return 'Hello teacher!';
+        
     }
 
 

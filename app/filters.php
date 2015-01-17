@@ -41,7 +41,7 @@ Route::filter('auth', function()
 		{
 			return Response::make('Unauthorized', 401);
 		}
-		return Redirect::action('getLogin');
+		return Redirect::action('AuthController@getLogin');
 	}
 });
 
@@ -54,11 +54,11 @@ Route::filter('noauth',function(){
 });
 
 Route::filter('teacher',function(){
-    return Auth::user()->isTeacher;
+    if(!Auth::user()->isTeacher) return Redirect::to('/');
 });
 
 Route::filter('student',function(){
-    return !Auth::user()->isTeacher;
+   if(Auth::user()->isTeacher) return Redirect::to('/');
 });
 
 

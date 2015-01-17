@@ -77,6 +77,11 @@ App::missing(function(){
     return Redirect::to('/');
 });
 
+
+App::after(function($request,$response){
+	Session::flash('alerts',AlertRepo::fetchAll());
+});
+
 /*
  *
 |--------------------------------------------------------------------------

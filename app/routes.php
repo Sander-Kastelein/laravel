@@ -5,10 +5,9 @@
  * Studenten gedeelte
  */
 
-Route::group(['namespace'=>'student','before' => 'auth|student'], function()
+Route::group(['prefix'=>'student','before' => 'auth|student'], function()
 {
-    Route::get('dashboard','StudentController@getDashboard');
-
+    Route::get('dashboard',['uses'=>'StudentController@getDashboard']);
 });
 
 /*----------------------------------------------------------------------------------------------------------------------
@@ -17,9 +16,9 @@ Route::group(['namespace'=>'student','before' => 'auth|student'], function()
  *
  */
 
-Route::group(['namespace'=>'teacher','before' => 'auth|teacher'], function()
+Route::group(['prefix'=>'teacher','before' => 'auth|teacher'], function()
 {
-    Route::get('dashboard','TeacherController@getDashboard');
+    Route::get('dashboard',['uses'=>'TeacherController@getDashboard']);
 });
 
 /*----------------------------------------------------------------------------------------------------------------------
@@ -34,4 +33,4 @@ Route::get('/',['before'=>'noauth','uses'=>function(){
 
 Route::get('/login',['before'=>'noauth','uses'=>'AuthController@getLogin']);
 Route::post('/login',['before'=>'noauth|csrf','uses'=>'AuthController@postLogin']);
-Route::get('/logout',['before'=>'auth','users'=>'AuthController@getLogout']);
+Route::get('/logout',['before'=>'auth','uses'=>'AuthController@getLogout']);

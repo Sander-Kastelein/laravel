@@ -9,7 +9,7 @@
 Class StudentController extends BaseController{
 
     public function getDashboard(){
-        return 'hello world';
+        $this->layout->page = 'Hello world';
     }
 
 
