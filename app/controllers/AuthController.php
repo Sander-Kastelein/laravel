@@ -9,10 +9,10 @@
 use \Technasium\Alert;
 
 
-Class AuthController extends BaseController{
+Class AuthController extends Controller{
 
     public function getLogin(){
-        $this->layout->page = View::make('pages.login');
+        return View::make('layout.login');
     }
 
     public function postLogin(){
@@ -21,10 +21,11 @@ Class AuthController extends BaseController{
         $credentials['password'] || $credentials['password'] = ''; //Altijd een parameter voor password in de array hebben.
         $remember = (boolean)Input::get('remember'); // Als checkbox aangezet is, dan moet de gebruiker blijven ingelogged.
 
+
         if(Auth::attempt($credentials,$remember)){
             return Redirect::to('/');
         }else{
-            AlertRepo::add(new Alert('danger','alerts.credentials'))     ;
+            AlertRepo::add(new Alert('danger','Ongeldige login'))     ;
             return Redirect::action('AuthController@getLogin');
         }
     }

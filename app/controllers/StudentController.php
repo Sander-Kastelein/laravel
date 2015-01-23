@@ -9,7 +9,7 @@
 Class StudentController extends BaseController{
 
     public function getDashboard(){
-        $this->layout->page = 'Hello world';
+        $this->layout->page = View::make('pages.dashboard_student');
     }
 
 

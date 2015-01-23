@@ -12,16 +12,16 @@
           <ul class="nav navbar-nav">
             @if(isset($user))
               @if($user->isTeacher)
-                @include('components.menu_items_teacher');
+                @include('components.menu_items_teacher')
               @else
-                @include('components.menu_items_student');
+                @include('components.menu_items_student')
               @endif
             @endif
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
             @if(isset($user))
-              <li><a class="btn btn-link hvr-ripple-out" href="{{action('AuthController@getLogout')}}">Log uit</a></li>
+              <li><a class="btn btn-link" href="{{action('AuthController@getLogout')}}">Log uit</a></li>
             @endif
           </ul>
 
