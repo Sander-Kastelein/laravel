@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
+		Artisan::call('migrate:refresh');
+
+
 		$this->call('UsersTableSeeder');
 	}
 

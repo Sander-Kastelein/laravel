@@ -8,6 +8,12 @@
 Route::group(['prefix'=>'student','before' => 'auth|student'], function()
 {
     Route::get('dashboard',['uses'=>'StudentController@getDashboard']);
+    Route::get('test',function(){
+    	$user = Auth::user();
+    	$groups = $user->groups;
+    	var_dump($groups->toJson());
+
+    });
 });
 
 /*----------------------------------------------------------------------------------------------------------------------
