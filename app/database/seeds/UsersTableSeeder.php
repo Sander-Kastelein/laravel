@@ -8,12 +8,16 @@ class UsersTableSeeder extends Seeder {
 		$user = User::create([
 			'email'=>'sander@sanderkastelein.nl',
 			'password'=>Hash::make('qwerty'),
+			'name' => 'Sander Kastelein',
+			'class' => '5F',
 			'is_teacher'=>false
 		]);
 
 		$teacher = User::create([
-			'email' => 'leraar@sanderkastelein.nl',
+			'email' => 'joop@binas.nl',
 			'password'=>Hash::make('qwerty'),
+			'name'=>'Joop BiNaS',
+			'class'=>'Geen',
 			'is_teacher'=>true
 		]);
 
@@ -24,8 +28,7 @@ class UsersTableSeeder extends Seeder {
 			'name' => 'Test groep 2'
 		]);
 
-		$user->groups()->save($group1);
-		$teacher->groups()->save($group1);
+		$group1->addUser($user);
 
 
 	}

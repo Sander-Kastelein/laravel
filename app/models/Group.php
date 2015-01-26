@@ -15,6 +15,28 @@ Class Group extends ELoquent{
 	}
 	
 
+	public function getTeachersAsString(){
+		$string = '';
+		foreach($this->teachers as $teacher){
+			$string .= $teacher->name.', ';
+		}
+		return substr($string, 0, -2);
+	}
+
+	public function addUser(User $user){
+		if($this->hasUser($user)) return false;
+		$this->users()->save($user);
+		return true;
+	}
+
+	public function hasUser(User $checkUser){
+		foreach($this->users as $user){
+			if($checkUser->id === $user->id) return true;
+		}
+		return false;
+	}
+
+
 
 
 	
