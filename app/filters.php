@@ -50,17 +50,17 @@ Route::filter('auth', function()
 
 Route::filter('noauth',function(){
     if(!Auth::guest()){
-        if(Auth::user()->isTeacher) return Redirect::action('TeacherController@getDashboard');
+        if(Auth::user()->is_teacher) return Redirect::action('TeacherController@getDashboard');
         return Redirect::action('StudentController@getDashboard');
     }
 });
 
 Route::filter('teacher',function(){
-    if(!Auth::user()->isTeacher) return Redirect::to('/');
+    if(!Auth::user()->is_teacher) return Redirect::to('/');
 });
 
 Route::filter('student',function(){
-   if(Auth::user()->isTeacher) return Redirect::to('/');
+   if(Auth::user()->is_teacher) return Redirect::to('/');
 });
 
 

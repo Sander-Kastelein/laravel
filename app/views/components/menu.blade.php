@@ -11,7 +11,7 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             @if(isset($user))
-              @if($user->isTeacher)
+              @if($user->is_teacher)
                 @include('components.menu_items_teacher')
               @else
                 @include('components.menu_items_student')

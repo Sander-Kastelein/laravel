@@ -16,19 +16,23 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 
-	public function createNewGroup($name, Collection $users = null){
+	public function createNewGroup($name, Array $users = null){
 		if(!$this->is_teacher) throw new Exception('You do not have suffficient permissions to create a group.');
 		$group = new Group();
 		$group->name = $name;
 		$success = $group->save();
 		if(!$success) throw new Exception('Could not create group!');
 		$group->users()->save($this);
-		if(is_null($users) || !$returnValue) return $group;
+		if(is_null($users) || !$success) return $group;
 
 		foreach($users as $user){
 			$group->users()->save($user);
 		}
 		return $group;
+	}
+
+	public static function getStudents(){
+		return User::where('is_teacher','=',false)->get();
 	}
 
 
