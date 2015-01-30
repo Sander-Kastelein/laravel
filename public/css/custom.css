@@ -14,3 +14,7 @@ html,body{
 	background-attachment: fixed;
 	height:100%;
 }
+
+.clickable{
+	cursor:pointer;
+}

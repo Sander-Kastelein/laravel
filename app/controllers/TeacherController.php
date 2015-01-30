@@ -5,6 +5,8 @@
  * Date: 10-1-2015
  * Time: 14:10
  */
+use \Technasium\Alert;
+
 
 Class TeacherController extends BaseController{
 
@@ -37,7 +39,23 @@ Class TeacherController extends BaseController{
     		$students[$k] = User::find($v);
     	}
     	$group = $user->createNewGroup(Input::get('name'),$students);
-    	dd("Groep aangemaakt");
+    	   
+        AlertRepo::add(new Alert('success','Nieuwe groep <strong>'.$group->name.'</strong> aangemaakt.'));
+        return Redirect::action('TeacherController@getGroups');
+    }
+
+    public function getDeleteGroup($id){
+        $group = Group::find($id);
+        $user = Auth::user();
+        if(!$group){
+            AlertRepo::add(new Alert('danger','Groep bestaat niet.'));
+            return Redirect::action('TeacherController@getGroups');
+        }
+        if(!$group->hasTeacher($user)) return Redirect::action('TeacherController@getGroups');
+        $name = $group->name;
+        $group->forceDelete();
+        AlertRepo::add(new Alert('success','Groep <strong>'.$name.'</strong> verwijderd.'));
+        return Redirect::action('TeacherController@getGroups');
     }
 
 }
