@@ -13,7 +13,7 @@
 	<tbody>
 		@foreach($groups as $group)
 			<tr>
-			<td><a href="{{action('StudentController@getGroup',['id'=>$group->id])}}">{{$group->name}}</a></td>
+			<td><a href="{{action('TeacherController@getGroup',['id'=>$group->id])}}">{{$group->name}}</a></td>
 			<td>{{count($group->students)}}</td>
 			<td>{{$group->getTeachersAsString()}}</td>
 			<td><a onclick="return confirm('Weet u zeker dat u deze groep wilt verwijderen?');" href="{{action('TeacherController@getDeleteGroup',[$group->id])}}"><i class="fa fa-trash"></i></a></td>
