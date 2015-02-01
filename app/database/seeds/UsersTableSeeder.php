@@ -40,11 +40,12 @@ class UsersTableSeeder extends Seeder {
 		]);
 
 
-		$group1 = $teacher->createNewGroup('Gemaakte groep 1',[$user]);
+		$project = $teacher->createNewProject('Test project','Een leuk O&O project!');
 
-		$group2 = Group::create([
-			'name' => 'Test groep 2'
-		]);
+
+		$group1 = $teacher->createNewGroup('Gemaakte groep 1',$project,[$user]);
+
+		
 
 
 

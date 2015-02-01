@@ -38,7 +38,15 @@ Class TeacherController extends BaseController{
     	foreach($students as $k=>$v){
     		$students[$k] = User::find($v);
     	}
-    	$group = $user->createNewGroup(Input::get('name'),$students);
+
+        $project = Project::find(Input::get('project_id'));
+
+        if(!$project){
+            AlertRepo::add(new Alert('danger','Project niet gevonden!'));
+            return Redirect::action('TeacherController@getGroups');
+        }
+
+    	$group = $user->createNewGroup(Input::get('name'),$project,$students);
     	   
         AlertRepo::add(new Alert('success','Nieuwe groep <strong>'.$group->name.'</strong> aangemaakt.'));
         return Redirect::action('TeacherController@getGroups');
@@ -56,6 +64,47 @@ Class TeacherController extends BaseController{
         $group->forceDelete();
         AlertRepo::add(new Alert('success','Groep <strong>'.$name.'</strong> verwijderd.'));
         return Redirect::action('TeacherController@getGroups');
+    }
+
+
+    public function getProjects(){
+        $projects = Project::all();
+        $this->layout->page = View::make('pages.teachers.projects')->with('projects',$projects);
+    }
+
+    public function getNewProject(){
+
+    }
+
+    public function postNewProject(){
+        
+    }
+
+    public function getProject($id){
+        $project = Project::find($id);
+        $this->layout->page = View::make('pages.teachers.project')->with('project',$project);
+    }
+
+    public function getDeleteProject($id){
+        $project = Project::find($id);
+        $user = Auth::user();
+        if(!$project){
+            AlertRepo::add(new Alert('danger','Groep bestaat niet.'));
+            return Redirect::action('TeacherController@getProjects');
+        }
+        if($project->owner_id != $user->id){
+            AlertRepo::add(new Alert('danger','Alleen de beheerder mag een project verwijderen!'));
+            return Redirect::action('TeacherController@getProjects');
+        }
+        $name = $project->name;
+
+        foreach($project->groups as $group){
+            $group->forceDelete();
+        }
+
+        $project->forceDelete();
+        AlertRepo::add(new Alert('success','Project <strong>'.$name.'</strong> verwijderd.'));
+        return Redirect::action('TeacherController@getProjects');
     }
 
 }

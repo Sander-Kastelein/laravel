@@ -21,6 +21,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             @if(isset($user))
+              <li><span style="line-height: 18px;position: relative;display: block;padding: 10px 15px;">Welkom <strong>{{$user->name}}</strong></span></li>
               <li><a class="btn btn-link" href="{{action('AuthController@getLogout')}}">Log uit</a></li>
             @endif
           </ul>

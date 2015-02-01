@@ -16,10 +16,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 
-	public function createNewGroup($name, Array $users = null){
+	public function createNewGroup($name, Project $project, Array $users = null){
 		if(!$this->is_teacher) throw new Exception('You do not have suffficient permissions to create a group.');
 		$group = new Group();
 		$group->name = $name;
+		$group->project_id = $project->id;
 		$success = $group->save();
 		if(!$success) throw new Exception('Could not create group!');
 		$group->users()->save($this);
@@ -30,6 +31,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		}
 		return $group;
 	}
+
+	public function createNewProject($name,$description){
+		if(!$this->is_teacher) throw new Exception('You do not have suffficient permissions to create a project.');
+		$project = new Project();
+		$project->name = $name;
+		$project->description = $description;
+		$project->owner_id = $this->id;
+		if(!$project->save()) throw new Exception('Could not create project!');
+		return $project;
+	}
+
 
 	public static function getStudents(){
 		return User::where('is_teacher','=',false)->get();

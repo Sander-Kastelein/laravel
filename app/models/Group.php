@@ -6,6 +6,10 @@ Class Group extends ELoquent{
 		return $this->belongsToMany('User');
 	}
 
+	public function project(){
+		return $this->belongsTo('project');
+	}
+
 	public function students(){
 		return $this->belongsToMany('User')->where('is_teacher',false);
 	}
