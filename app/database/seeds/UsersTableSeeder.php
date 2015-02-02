@@ -42,6 +42,9 @@ class UsersTableSeeder extends Seeder {
 
 		$project = $teacher->createNewProject('Test project','Een leuk O&O project!');
 
+		$file = 'Hello world!';
+		$project->createNewFile('test.txt',$file,strlen($file));
+
 
 		$group1 = $teacher->createNewGroup('Gemaakte groep 1',$project,[$user]);
 

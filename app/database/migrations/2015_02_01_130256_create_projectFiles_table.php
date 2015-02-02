@@ -17,6 +17,8 @@ class CreateProjectFilesTable extends Migration {
 			$table->increments('id');
 			$table->integer('project_id');
 			$table->string('name');
+			$table->integer('size');
+			$table->string('mime')->default('application/octet-stream');
 			$table->boolean('hidden')->default(false);
 			$table->binary('file');
 			$table->timestamps();

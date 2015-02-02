@@ -36,8 +36,12 @@ Route::group(['prefix'=>'teacher','before' => 'auth|teacher'], function()
     Route::get('projects','TeacherController@getProjects');
     Route::get('project/new','TeacherController@getNewProject');
     Route::post('project/new','TeacherController@postNewProject');
-    Route::get('project/{id}','TeacherController@getProject');
+    Route::get('project/{id}','TeacherController@getProject')->where('id', '[0-9]+');
     Route::get('project/delete/{id}','TeacherController@getDeleteProject');
+    Route::get('project/download/{id}','TeacherController@getProjectFileDownload');
+    Route::get('project/upload/{id}','TeacherController@getUploadProjectFile');
+    Route::post('project/upload','TeacherController@postUploadProjectFile');
+
 });
 
 /*----------------------------------------------------------------------------------------------------------------------

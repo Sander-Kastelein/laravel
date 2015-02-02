@@ -107,4 +107,48 @@ Class TeacherController extends BaseController{
         return Redirect::action('TeacherController@getProjects');
     }
 
+    public function getProjectFileDownload($id){
+        $file = ProjectFile::find($id);
+        header('Content-Description: File Transfer');
+        header('Content-Type: '.$file->mime);
+        header('Content-Disposition: attachment; filename="'.$file->name.'"');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: '.$file->size);
+        die($file->file);
+    }
+
+    public function getUploadProjectFile($id){
+        $this->layout->page = View::make('pages.teachers.upload_project_file')->with('projectId',$id);
+    }
+
+    public function postUploadProjectFile(){
+        $project = Input::get('project_id');
+        $project = Project::find($project);
+        if(!$project){  
+            AlertRepo::add(new Alert('danger','Project niet gevonden.'));
+            return Redirect::action('TeacherController@getUploadProjectFile',['id'=>$project->id]);
+        }
+        if(!Input::hasFile('file')){
+            AlertRepo::add(new Alert('danger','Kon file niet vinden.'));
+            return Redirect::action('TeacherController@getUploadProjectFile',['id'=>$project->id]);
+        }
+        $file = Input::file('file');
+
+        $hidden = (Input::get('hidden')==='on');
+        $size = $file->getSize();
+        $mime = $file->getMimeType();
+        $name = $file->getClientOriginalName();
+        $binary = file_get_contents($file);
+
+        $file = $project->createNewFile($name,$binary,$size,$hidden,$mime);
+
+        AlertRepo::add(new Alert('success','File geupload'));
+        return Redirect::action('TeacherController@getProject',['id'=>$project->id]);
+
+
+    }
+
 }
