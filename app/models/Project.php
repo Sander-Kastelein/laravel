@@ -4,7 +4,7 @@
 Class Project extends Eloquent{
 	
 	function groups(){
-		return $this->hasMany('group');
+		return $this->hasMany('Group');
 	}
 
 	function files(){
