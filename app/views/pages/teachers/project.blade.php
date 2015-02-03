@@ -42,7 +42,14 @@ Beschrijving:
 				<td><input type="checkbox" name="files[]"></td>
 				<td>{{$file->name}}</td>
 				<td>{{$file->size}}</td>
-				<td><a href="{{action('TeacherController@getProjectFileDownload',['id'=>$file->id])}}"><i class="fa fa-download"></i></a></td>
+				<td>
+					<a href="{{action('TeacherController@getProjectFileDownload',['id'=>$file->id])}}">
+						<i class="fa fa-download"></i>
+					</a>
+					<a onclick="return confirm('Weet u zeker dat u {{$file->name}} wilt verwijderen?')" href="{{action('TeacherController@getDeleteProjectFile',['id'=>$file->id])}}">
+						<i class="fa fa-trash"></i>
+					</a>
+				</td>
 			</tr>
 		@endforeach
 	</tbody>

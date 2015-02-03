@@ -147,8 +147,14 @@ Class TeacherController extends BaseController{
 
         AlertRepo::add(new Alert('success','File geupload'));
         return Redirect::action('TeacherController@getProject',['id'=>$project->id]);
+    }
 
-
+    public function getDeleteProjectFile($id){
+        $projectFile = ProjectFile::find($id);
+        $projectId = $projectFile->project->id;
+        $projectFile->forceDelete();
+        AlertRepo::add(new Alert('success','Bestand verwijderd'));
+        return Redirect::action('TeacherController@getProject',['id'=>$projectId]);
     }
 
 }
