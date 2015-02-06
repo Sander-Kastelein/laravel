@@ -7,7 +7,7 @@ Class Group extends ELoquent{
 	}
 
 	public function project(){
-		return $this->belongsTo('project');
+		return $this->belongsTo('Project');
 	}
 
 	public function students(){

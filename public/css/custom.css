@@ -1,5 +1,5 @@
 .main{
-	padding-top: 50px;
+	padding-top: 46px;
 	background-color: white;
 	border-left: 1px solid #eeeeee;
 	border-right: 1px solid #eeeeee;
@@ -189,10 +189,10 @@
  rgba(243, 208, 39, 0.33) 181px 181px,
  rgba(243, 208, 39, 0.33) 182px 182px;
 
- padding-bottom: 50px;
+ padding-bottom: 46px;
 }
 html,body{
-	padding-top: 40px;
+	padding-top: 38px;
 	background: url('/img/background.jpg') no-repeat center center fixed; 
 	background:#F7DA55;
 	-webkit-background-size: cover;
