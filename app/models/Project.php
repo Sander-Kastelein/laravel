@@ -23,6 +23,13 @@ Class Project extends Eloquent{
 		return $file;
 	}
 
+	public function hasStudent(User $user){
+		foreach($this->groups as $group){
+			if($group->hasStudent($user)) return true;
+		}
+		return false;
+	}
+
 
 
 

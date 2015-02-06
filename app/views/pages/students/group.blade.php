@@ -35,3 +35,28 @@
 	</tbody>
 </table>
 
+<h2>Project bestanden</h2>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Bestandnaam</th>
+			<th>Groote</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach($group->project->files as $file)
+			<tr>
+				<td><input type="checkbox" name="files[]"></td>
+				<td>{{$file->name}}</td>
+				<td>{{$file->size}}</td>
+				<td>
+					<a href="{{action('StudentController@getProjectFileDownload',['id'=>$file->id])}}">
+						<i class="fa fa-download"></i>
+					</a>
+				</td>
+			</tr>
+		@endforeach
+	</tbody>
+</table>

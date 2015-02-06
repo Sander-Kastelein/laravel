@@ -24,5 +24,24 @@ Class StudentController extends BaseController{
     	$this->layout->page = View::make('pages.students.group')->with('group',$group);
     }
 
+    public function getProjectFileDownload($id){
+        $file = ProjectFile::find($id);
+        $user = Auth::user();
+        if(!$file->project->hasStudent($user)){
+            AlertRepo::add(new Alert('danger','Je hebt geen toegang tot deze file'));
+            return Redirect::action('StudentController@getDashboard');
+        }
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: '.$file->mime);
+        header('Content-Disposition: attachment; filename="'.$file->name.'"');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: '.$file->size);
+        die($file->file);
+    }
+
 
 }

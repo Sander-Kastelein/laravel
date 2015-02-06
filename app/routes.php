@@ -10,6 +10,7 @@ Route::group(['prefix'=>'student','before' => 'auth|student'], function()
     Route::get('dashboard',['uses'=>'StudentController@getDashboard']);
     Route::get('groups','StudentController@getGroups');
     Route::get('group/{id}','StudentController@getGroup')->where('id', '[0-9]+');
+    Route::get('project/file/download/{id}','StudentController@getProjectFileDownload');
     Route::get('test',function(){
     	$user = Auth::user();
     	$groups = $user->groups;

@@ -40,6 +40,14 @@ Class Group extends ELoquent{
 		return false;
 	}
 
+	public function hasStudent(User $checkStudent){
+		if($checkStudent->is_teacher) return false;
+		foreach($this->users as $user){
+			if($checkStudent->id === $user->id) return true;
+		}
+		return false;
+	}
+
 	public function hasTeacher(User $checkTeacher){
 		if(!$checkTeacher->is_teacher) return false;
 		foreach($this->users as $user){
