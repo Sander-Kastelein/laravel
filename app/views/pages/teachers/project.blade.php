@@ -7,7 +7,7 @@ Beschrijving:
 </div>
 
 
-<h2>Groepen</h2>
+<h2>Groepen</h2><a href="{{action('TeacherController@getAddGroupsToProject')}}"></a>
 <table class="table table-hover">
 	<thead>
 		<tr>

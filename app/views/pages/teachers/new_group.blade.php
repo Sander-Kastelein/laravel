@@ -4,6 +4,9 @@ Naam:
 <br>
 Leerlingen:
 @include('components.forms.students')
+<br>
+Project:
+@include('components.forms.projects')
 {{Form::token()}}
 <input type="submit">
 </form>

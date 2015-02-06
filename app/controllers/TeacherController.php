@@ -39,7 +39,7 @@ Class TeacherController extends BaseController{
     		$students[$k] = User::find($v);
     	}
 
-        $project = Project::find(Input::get('project_id'));
+        $project = Project::find(Input::get('project'));
 
         if(!$project){
             AlertRepo::add(new Alert('danger','Project niet gevonden!'));
@@ -73,11 +73,21 @@ Class TeacherController extends BaseController{
     }
 
     public function getNewProject(){
-
+        $this->layout->page = View::make('pages.teachers.new_project');
     }
 
     public function postNewProject(){
-        
+        $user = Auth::user();
+        $name = Input::get('name');
+        $description = Input::get('description');
+
+        if(empty($description) || empty($name)){
+            AlertRepo::add(new Alert('warning','gelieve alle velden in te vullen'));
+            return Redirect::action('TeacherController@getNewProject');
+        }
+        $project = $user->createNewProject($name,$description);
+        return Redirect::action('TeacherController@getProject',['id'=>$project->id]);
+
     }
 
     public function getProject($id){
