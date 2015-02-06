@@ -17,6 +17,10 @@ Class Group extends ELoquent{
 	public function teachers(){
 		return $this->belongsToMany('User')->where('is_teacher',true);
 	}
+
+	public function files(){
+		return $this->belongsToMany('GroupFiles');
+	}
 	
 
 	public function getTeachersAsString(){
