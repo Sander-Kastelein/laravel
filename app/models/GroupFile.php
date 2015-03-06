@@ -3,15 +3,11 @@
 Class GroupFile extends Eloquent{
 	
 	public function group(){
-		return $this->hasOne('Group');
+		return $this->BelongsTo('Group');
 	}
 
 	public function owner(){
 		return $this->hasOne('User');
 	}
-
-
-
-
 
 }

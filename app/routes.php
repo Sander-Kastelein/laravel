@@ -17,6 +17,9 @@ Route::group(['prefix'=>'student','before' => 'auth|student'], function()
     	var_dump($groups[0]->users->toJson());
 
     });
+    Route::get('/group/{id}/upload','StudentController@getUploadFile');
+    Route::post('/group/upload','StudentController@postUploadFile');
+    Route::get('/group/{id}/download/{groupFileId}','StudentController@getFileDownload');
 });
 
 /*----------------------------------------------------------------------------------------------------------------------

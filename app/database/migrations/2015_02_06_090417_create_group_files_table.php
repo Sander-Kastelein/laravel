@@ -17,10 +17,9 @@ class CreateGroupFilesTable extends Migration {
 			$table->increments('id');
 			$table->integer('group_id');
 			$table->integer('user_id');
-			$table->string('name')->unique();
+			$table->string('name');
 			$table->integer('size');
 			$table->string('mime')->default('application/octet-stream');
-			$table->boolean('hidden')->default(false);
 			$table->binary('file');
 			$table->timestamps();
 		});

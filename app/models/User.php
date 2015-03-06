@@ -16,7 +16,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	public function groupFiles(){
-		return $this->belongsToMany('GroupFiles');
+		return $this->belongsToMany('GroupFile');
 	}
 
 	public function createNewGroup($name, Project $project, Array $users = null){

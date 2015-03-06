@@ -19,7 +19,7 @@ Class Group extends ELoquent{
 	}
 
 	public function files(){
-		return $this->belongsToMany('GroupFiles');
+		return $this->hasMany('GroupFile');
 	}
 	
 
@@ -29,6 +29,18 @@ Class Group extends ELoquent{
 			$string .= $teacher->name.', ';
 		}
 		return substr($string, 0, -2);
+	}
+
+	public function createNewFile($name,$binary,$size,$user_id,$mime=false){
+		$file = new GroupFile();
+		$file->group_id = $this->id;
+		$file->user_id = $user_id;
+		$file->name = $name;
+		$file->size = $size;
+		if($mime) $file->mime = $mime;
+		$file->file = $binary;
+		if(!$file->save()) throw new Exception('Could not add file to project.');
+		return $file;
 	}
 
 	public function addUser(User $user){

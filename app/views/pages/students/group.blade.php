@@ -60,3 +60,31 @@
 		@endforeach
 	</tbody>
 </table>
+
+
+<h2>Groep bestanden</h2>
+<a href="{{action('StudentController@getUploadFile',['id'=>$group->id])}}">Upload een bestand</a>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Bestandnaam</th>
+			<th>Groote</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach($group->files as $file)
+			<tr>
+				<td><input type="checkbox" name="files[]"></td>
+				<td>{{$file->name}}</td>
+				<td>{{$file->size}}</td>
+				<td>
+					<a href="{{action('StudentController@getFileDownload',['id'=>$group->id,'groupFileId'=>$file->id])}}">
+						<i class="fa fa-download"></i>
+					</a>
+				</td>
+			</tr>
+		@endforeach
+	</tbody>
+</table>

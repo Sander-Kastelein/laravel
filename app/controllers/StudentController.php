@@ -5,6 +5,7 @@
  * Date: 10-1-2015
  * Time: 14:09
  */
+use \Technasium\Alert;
 
 Class StudentController extends BaseController{
 
@@ -41,6 +42,54 @@ Class StudentController extends BaseController{
         header('Pragma: public');
         header('Content-Length: '.$file->size);
         die($file->file);
+    }
+
+    public function getUploadFile($id){
+        $group = Group::find($id);
+        $this->layout->page = View::make('pages.students.upload_file')->with('group',$group);
+    }
+
+    public function postUploadFile(){
+        $group = Group::find(Input::get('group_id'));
+        $user = Auth::user();
+
+        if(!Input::hasFile('file')){
+            AlertRepo::add(new Alert('danger','Kon file niet vinden.'));
+            return Redirect::action('StudentController@getUploadFile',['id'=>$group->id]);
+        }
+        $file = Input::file('file');
+
+        $size = $file->getSize();
+        $mime = $file->getMimeType();
+        $name = $file->getClientOriginalName();
+        $binary = file_get_contents($file);
+
+        $file = $group->createNewFile($name,$binary,$size,$user->id,$mime);
+
+        AlertRepo::add(new Alert('success','File geupload'));
+        return Redirect::action('StudentController@getGroup',['id'=>$group->id]);
+
+    }
+
+    public function getFileDownload($id,$groupFileId){
+        $file = GroupFile::findOrFail($id);
+
+        $user = Auth::user();
+        if(!$file->group->hasStudent($user)){
+            AlertRepo::add(new Alert('danger','Je hebt geen toegang tot deze file'));
+            return Redirect::action('StudentController@getDashboard');
+        }
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: '.$file->mime);
+        header('Content-Disposition: attachment; filename="'.$file->name.'"');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: '.$file->size);
+        die($file->file);
+        
     }
 
 
