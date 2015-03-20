@@ -106,9 +106,31 @@ Class StudentController extends BaseController{
        $pe->user_id = $user->id;
        $pe->group_id = $group->id;
        $pe->content = Input::get('html');
+       $pe->title = Input::get('title');
+       $pe->class = $user->class;
+       $pe->save();
 
-
+       return Redirect::action('StudentController@getPersonalEvaluation',['id'=>$pe->id]);
     }
+
+    public function getPersonalEvaluation($id){
+        $user = Auth::user();
+        $pe = PersonalEvaluation::findOrFail($id);
+
+        if($pe->user_id !== $user->id){
+            //Fail
+            return Redirect::action('StudentController@showGroups');
+        }
+
+        $this->layout->page = View::make('pages.students.pe')->with('pe',$pe);
+    }
+
+    public function getPersonalEvaluations(){
+        $user = Auth::user();
+        $this->layout->page = View::make('pages.students.pes')->with('pes',$user->personalEvaluations);
+    }
+
+
 
 
 

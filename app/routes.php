@@ -18,6 +18,10 @@ Route::group(['prefix'=>'student','before' => 'auth|student'], function()
     Route::get('/group/{id}/personalevaluation/new','StudentController@getNewPersonalEvaluation');
     Route::post('/group/{id}/personalevaluation/new','StudentController@postNewPersonalEvaluation');
     Route::get('/personalevaluation/{id}','StudentController@getPersonalEvaluation');
+
+    Route::get('/pe/{id}','StudentController@getPersonalEvaluation');
+    Route::get('pes','StudentController@getPersonalEvaluations');
+
 });
 
 /*----------------------------------------------------------------------------------------------------------------------

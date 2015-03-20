@@ -20,7 +20,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	public function personalEvaluations(){
-		return $this->belongsToMany('PersonalEvaluation');
+		return $this->hasMany('PersonalEvaluation')->orderBy('created_at','desc');
 	}
 
 	public function createNewGroup($name, Project $project, Array $users = null){

@@ -1,4 +1,4 @@
-<a href="{{action('StudentController@newPersonalEvaluation',['id'=>$group->id])}}" class="btn btn-success pull-right">Nieuw persoonlijk verslag</a>
+<a href="{{action('StudentController@getNewPersonalEvaluation',['id'=>$group->id])}}" class="btn btn-success pull-right">Nieuw persoonlijk verslag</a>
 <h1>{{$group->name}}</h1>
 <h4>{{$group->project->name}}</h4>
 <h2>Leerlingen</h2>
@@ -88,3 +88,26 @@
 		@endforeach
 	</tbody>
 </table>
+
+<h2>Persoonlijke verslagen</h2>
+<a href="{{action('StudentController@getNewPersonalEvaluation',['id'=>$group->id])}}" class="btn btn-success pull-right">Nieuw persoonlijk verslag</a>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Titel</th>
+			<th>Datum</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach($group->getMyPersonalEvaluations() as $pe)
+			<tr>
+				<td><input type="checkbox" name="files[]"></td>
+				<td><a href="{{action('StudentController@getPersonalEvaluation',['id'=>$pe->id])}}">{{$pe->title}}</a></td>
+				<td>{{$pe->created_at}}</td>
+			</tr>
+		@endforeach
+	</tbody>
+</table>
+
+

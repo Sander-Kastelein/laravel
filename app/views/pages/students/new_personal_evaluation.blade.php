@@ -1,12 +1,12 @@
 <h1>Nieuw persoonlijk verslag</h1>
 <form method="POST">
-	<label for="name">Titel</label>
+	<label for="title">Titel</label>
 	<br>
-	<input type="text" class="form-validation" id="name" name="name">
+	<input type="text" class="form-validation" id="title" name="title">
 	<br>
-	<label for="body">Verslag</label>
+	<label for="html">Verslag</label>
 	<br>
-	<textarea id="body" name="body"></textarea>
+	<textarea id="html" name="html"></textarea>
 	<input type="submit" value="Opslaan">
 </form>
 <script>

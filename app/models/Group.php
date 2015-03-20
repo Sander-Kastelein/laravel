@@ -22,8 +22,8 @@ Class Group extends ELoquent{
 		return $this->hasMany('GroupFile');
 	}
 
-	public function personalEvaluation(){
-		return $this->belongsToMany('PersonalEvaluation');
+	public function personalEvaluations(){
+		return $this->hasMany('PersonalEvaluation')->orderBy('created_at','desc');
 	}
 	
 
@@ -76,8 +76,14 @@ Class Group extends ELoquent{
 		return false;
 	}
 
-
-
-
+	public function getMyPersonalEvaluations(){
+		$pes = $this->personalEvaluations;
+		$user = Auth::user();
+		$result = [];
+		foreach($pes as $pe){
+			if($user->id == $pe->user_id) $result[] = $pe;
+		}
+		return $result;
+	}
 	
 }

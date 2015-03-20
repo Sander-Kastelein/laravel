@@ -6,3 +6,6 @@
 	Groepen
 	</a>
 </li>
+<li>
+	<a href="{{action('StudentController@getPersonalEvaluations')}}">Persoonlijke verslagen</a>
+</li>

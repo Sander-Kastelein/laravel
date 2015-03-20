@@ -12,12 +12,14 @@ class CreatePersonalEvaluationTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('personal_evaluation', function(Blueprint $table)
+		Schema::create('personal_evaluations', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->integer('group_id');
 			$table->text('content');
+			$table->string('title');
+			$table->string('class');
 			$table->timestamps();
 		});
 	}
@@ -30,7 +32,7 @@ class CreatePersonalEvaluationTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('personal_evaluation');
+		Schema::drop('personal_evaluations');
 	}
 
 }
