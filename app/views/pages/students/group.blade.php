@@ -1,6 +1,6 @@
+<a href="{{action('StudentController@newPersonalEvaluation',['id'=>$group->id])}}" class="btn btn-success pull-right">Nieuw persoonlijk verslag</a>
 <h1>{{$group->name}}</h1>
-
-
+<h4>{{$group->project->name}}</h4>
 <h2>Leerlingen</h2>
 <table class="table table-hover">
 	<thead>

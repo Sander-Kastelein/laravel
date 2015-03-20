@@ -11,15 +11,13 @@ Route::group(['prefix'=>'student','before' => 'auth|student'], function()
     Route::get('groups','StudentController@getGroups');
     Route::get('group/{id}','StudentController@getGroup')->where('id', '[0-9]+');
     Route::get('project/file/download/{id}','StudentController@getProjectFileDownload');
-    Route::get('test',function(){
-    	$user = Auth::user();
-    	$groups = $user->groups;
-    	var_dump($groups[0]->users->toJson());
-
-    });
     Route::get('/group/{id}/upload','StudentController@getUploadFile');
     Route::post('/group/upload','StudentController@postUploadFile');
     Route::get('/group/{id}/download/{groupFileId}','StudentController@getFileDownload');
+
+    Route::get('/group/{id}/personalevaluation/new','StudentController@getNewPersonalEvaluation');
+    Route::post('/group/{id}/personalevaluation/new','StudentController@postNewPersonalEvaluation');
+    Route::get('/personalevaluation/{id}','StudentController@getPersonalEvaluation');
 });
 
 /*----------------------------------------------------------------------------------------------------------------------

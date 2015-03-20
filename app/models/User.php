@@ -19,6 +19,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsToMany('GroupFile');
 	}
 
+	public function personalEvaluations(){
+		return $this->belongsToMany('PersonalEvaluation');
+	}
+
 	public function createNewGroup($name, Project $project, Array $users = null){
 		if(!$this->is_teacher) throw new Exception('You do not have suffficient permissions to create a group.');
 		$group = new Group();

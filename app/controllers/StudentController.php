@@ -92,5 +92,25 @@ Class StudentController extends BaseController{
         
     }
 
+    public function getNewPersonalEvaluation($id){
+        $group = Group::findOrFail($id);
+        $user = Auth::user();
+        $this->layout->page = View::make('pages.students.new_personal_evaluation')->with('group',$group)->with('user',$user);
+    }
+
+    public function postNewPersonalEvaluation($id){
+        $group = Group::findOrFail($id);
+        $user = Auth::user();
+
+       $pe = new PersonalEvaluation();
+       $pe->user_id = $user->id;
+       $pe->group_id = $group->id;
+       $pe->content = Input::get('html');
+
+
+    }
+
+
+
 
 }

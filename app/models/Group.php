@@ -21,6 +21,10 @@ Class Group extends ELoquent{
 	public function files(){
 		return $this->hasMany('GroupFile');
 	}
+
+	public function personalEvaluation(){
+		return $this->belongsToMany('PersonalEvaluation');
+	}
 	
 
 	public function getTeachersAsString(){
