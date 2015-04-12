@@ -13,9 +13,9 @@
 		@foreach(Skills::all() as $skill)
 		<tr>
 			<td>{{$skill->name}}</td>
-			<td class="tooltip" data-toggle="tooltip" title="{{$skill->description_level_1}}"><input type="checkbox" {{ ($skill->level($user) >= 1)?"checked":"" }}></td>
-			<td class="tooltip" data-toggle="tooltip" title="{{$skill->description_level_2}}"><input type="checkbox" {{ ($skill->level($user) >= 2)?"checked":"" }}></td>
-			<td class="tooltip" data-toggle="tooltip" title="{{$skill->description_level_3}}"><input type="checkbox" {{ ($skill->level($user) >= 3)?"checked":"" }}></td>
+			<td><input type="checkbox" {{ ($skill->level($user) >= 1)?"checked":"" }} class="tooltip" data-toggle="tooltip" title="{{$skill->description_level_1}}"></td>
+			<td><input type="checkbox" {{ ($skill->level($user) >= 2)?"checked":"" }} class="tooltip" data-toggle="tooltip" title="{{$skill->description_level_2}}"></td>
+			<td><input type="checkbox" {{ ($skill->level($user) >= 3)?"checked":"" }} class="tooltip" data-toggle="tooltip" title="{{$skill->description_level_3}}"></td>
 		</tr>	
 		@endforeach
 	</tbody>
