@@ -10,5 +10,5 @@
 	<a href="{{action('TeacherController@getProjects')}}">Projecten</a>
 </li>
 <li>
-	<a href="{{action('TeacherController@getPersonalEvaluation')}}">Persoonlijke verslagen</a>
+	<a href="{{action('TeacherController@getPersonalEvaluations')}}">Persoonlijke verslagen</a>
 </li>
