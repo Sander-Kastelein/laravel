@@ -1,7 +1,7 @@
 <?php
 
 
-Class SkillUser extends Eloquent{
+Class SkillsUser extends Eloquent{
 
 
 }
