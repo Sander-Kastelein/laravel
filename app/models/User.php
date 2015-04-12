@@ -12,7 +12,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	use UserTrait, RemindableTrait;
 
 	public function groups(){
-		return $this->belongsToMany('Group');
+		return $this->belongsToMany('Group')->orderBy('created_at','desc');
 	}
 
 	public function groupFiles(){
@@ -22,6 +22,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function personalEvaluations(){
 		return $this->hasMany('PersonalEvaluation')->orderBy('created_at','desc');
 	}
+
 
 	public function createNewGroup($name, Project $project, Array $users = null){
 		if(!$this->is_teacher) throw new Exception('You do not have suffficient permissions to create a group.');
@@ -56,6 +57,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
 
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -69,6 +71,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
+
+	public function getAllPersonalEvaluationComments(){
+		return $this->personalEvaluations->comments;
+	}
+
+	public function currentProject(){
+		return $this->groups[0]->project;
+	}
+
+	public function currentGroup(){
+		return $this->groups[0];
+	}
 
 
 }

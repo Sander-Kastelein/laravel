@@ -13,7 +13,7 @@
 		@foreach($user->personalEvaluations as $pe)
 			<tr>
 				<td><input type="checkbox" name="files[]"></td>
-				<td><a href="{{action('StudentController@getPersonalEvaluation',['id'=>$pe->id])}}">{{$pe->title}}</a></td>
+				<td><a href="{{action('TeacherController@getPersonalEvaluation',['id'=>$pe->id])}}">{{$pe->title}}</a></td>
 				<td>{{$pe->class}}</td>
 				<td>{{ft($pe->created_at)}}</td>
 			</tr>

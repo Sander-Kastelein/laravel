@@ -94,4 +94,9 @@ App::after(function($request,$response){
 |
 */
 
+function ft($dateTime){
+	return date('j-n-Y G:i', strtotime($dateTime));
+}
+
+
 require app_path().'/filters.php';

@@ -1,7 +1,9 @@
 <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="/" class="navbar-brand">Technasium Online</a>
+          <a href="/" class="navbar-brand">
+          <img src="/images/logo.png" style="height:22px;" >
+          </a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>

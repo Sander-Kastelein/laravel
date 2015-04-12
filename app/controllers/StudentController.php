@@ -72,7 +72,7 @@ Class StudentController extends BaseController{
     }
 
     public function getFileDownload($id,$groupFileId){
-        $file = GroupFile::findOrFail($id);
+        $file = GroupFile::findOrFail($groupFileId);
 
         $user = Auth::user();
         if(!$file->group->hasStudent($user)){
@@ -130,7 +130,22 @@ Class StudentController extends BaseController{
         $this->layout->page = View::make('pages.students.pes')->with('pes',$user->personalEvaluations);
     }
 
+    public function postAddComment($id){
+        $pe = PersonalEvaluation::findOrFail($id);
+        $user = Auth::user();
 
+
+
+        if($pe->user->id != $user->id) return Redirect::to('/');
+
+        $comment = new PersonalEvaluationComment();
+        $comment->personal_evaluation_id = $pe->id;
+        $comment->body = Input::get('html');
+        $comment->owner_id = $user->id;
+        $comment->save();
+
+        return Redirect::action('StudentController@getPersonalEvaluation',['id'=>$id]);
+    }
 
 
 

@@ -4,14 +4,15 @@ class PersonalEvaluation extends \Eloquent {
 	protected $fillable = [];
 
 	public function group(){
-		return $this->hasOne('Group');
+		return $this->belongsTo('Group');
 	}
 
 	public function user(){
-		return $this->hasOne('User');
+		return $this->belongsTo('User');
 	}
-
-
-
+	
+	public function comments(){
+		return $this->hasMany('PersonalEvaluationComment');
+	}
 
 }

@@ -1,5 +1,5 @@
 <h2>Persoonlijk verslag</h2>
-Gemaakt op: {{$pe->created_at}}<br>
+Gemaakt op: {{ft($pe->created_at)}}<br>
 <a href="{{action('StudentController@getGroup',['id'=>$pe->group_id])}}">Ga naar project groep</a><br>
 <a href="{{action('StudentController@getPersonalEvaluations')}}">Ga naar overicht persoonlijke verslagen</a>
 
@@ -7,3 +7,5 @@ Gemaakt op: {{$pe->created_at}}<br>
 	<h3>{{$pe->title}}</h3>
 	{{ $pe->content }}
 </div>
+
+@include('components.comments')

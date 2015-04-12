@@ -17,9 +17,9 @@ Route::group(['prefix'=>'student','before' => 'auth|student'], function()
 
     Route::get('/group/{id}/personalevaluation/new','StudentController@getNewPersonalEvaluation');
     Route::post('/group/{id}/personalevaluation/new','StudentController@postNewPersonalEvaluation');
-    Route::get('/personalevaluation/{id}','StudentController@getPersonalEvaluation');
 
     Route::get('/pe/{id}','StudentController@getPersonalEvaluation');
+    Route::post('/pe/{id}/addcomment','StudentController@postAddComment');
     Route::get('pes','StudentController@getPersonalEvaluations');
 
 });
@@ -48,6 +48,12 @@ Route::group(['prefix'=>'teacher','before' => 'auth|teacher'], function()
     Route::get('project/file/upload/{id}','TeacherController@getUploadProjectFile');
     Route::post('project/file/upload','TeacherController@postUploadProjectFile');
     Route::get('project/file/delete/{id}','TeacherController@getDeleteProjectFile');
+
+    Route::get('/pe/{id}','TeacherController@getPersonalEvaluation');
+    Route::post('/pe/{id}/addcomment','TeacherController@postAddComment');
+    Route::get('pes','TeacherController@getPersonalEvaluations');
+
+    Route::get('user/{id}','TeacherController@getUser');
 
 });
 

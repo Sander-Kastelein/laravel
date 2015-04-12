@@ -20,8 +20,9 @@
 	@include('components.alerts')
 	{{$page}}
 </div>
-<footer style="text-align:center;position:relative;margin-top:-36px;">
-	Gemaakt door: Hidde Zijlstra &amp; Sander Kastelein 2015<br>Distributie onder <a href="http://www.gnu.org/copyleft/gpl.html">GNU GPL 3 v3</a>
+<footer>
+    Gemaakt door Hidde Zijlstra &amp; Sander Kastelein<br>
+    Pagina gerenderd in <strong>{{ round((microtime(true) - LARAVEL_START)*1000) }}ms</strong>
 </footer>
 
 <script src="/js/bootstrap.min.js"></script>

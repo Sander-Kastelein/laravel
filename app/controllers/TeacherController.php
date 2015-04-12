@@ -167,4 +167,35 @@ Class TeacherController extends BaseController{
         return Redirect::action('TeacherController@getProject',['id'=>$projectId]);
     }
 
+    public function getPersonalEvaluation($id){
+        $user = Auth::user();
+        $pe = PersonalEvaluation::findOrFail($id);
+        $this->layout->page = View::make('pages.teachers.pe')->with('pe',$pe);
+    }
+
+    public function getPersonalEvaluations(){
+        $this->layout->page = View::make('pages.teachers.pes')->with('pes',PersonalEvaluations::all());
+    }
+
+    public function postAddComment($id){
+        $pe = PersonalEvaluation::findOrFail($id);
+        $user = Auth::user();
+
+        $comment = new PersonalEvaluationComment();
+        $comment->personal_evaluation_id = $pe->id;
+        $comment->body = Input::get('html');
+        $comment->owner_id = $user->id;
+        $comment->save();
+
+        return Redirect::action('TeacherController@getPersonalEvaluation',['id'=>$id]);
+    }
+
+    public function getUser($id){
+        $user = User::findOrFail($id);
+        $this->layout->page = View::make('pages.teachers.user',['user'=>$user]);
+    }
+
+
+
+
 }

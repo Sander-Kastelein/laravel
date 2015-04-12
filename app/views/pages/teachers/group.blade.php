@@ -12,7 +12,7 @@
 	<tbody>
 		@foreach($group->students as $student)
 			<tr>
-				<td>{{$student->name}}</td>
+				<td><a href="{{action('TeacherController@getUser',['id'=>$student->id])}}">{{$student->name}}</a></td>
 				<td>{{$student->class}}</td>
 			</tr>
 		@endforeach

@@ -104,7 +104,7 @@
 			<tr>
 				<td><input type="checkbox" name="files[]"></td>
 				<td><a href="{{action('StudentController@getPersonalEvaluation',['id'=>$pe->id])}}">{{$pe->title}}</a></td>
-				<td>{{$pe->created_at}}</td>
+				<td>{{ft($pe->created_at)}}</td>
 			</tr>
 		@endforeach
 	</tbody>
