@@ -15,7 +15,7 @@ class CreateSkillsUsersTable extends Migration {
 		Schema::create('skills_users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('skills_id');
+			$table->integer('skill_id');
 			$table->integer('user_id');
 			$table->integer('level');
 		});
