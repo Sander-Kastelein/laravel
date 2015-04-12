@@ -70,6 +70,7 @@
 			<th></th>
 			<th>Bestandnaam</th>
 			<th>Groote</th>
+			<th>Ge&uuml;pload op</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -79,6 +80,7 @@
 				<td><input type="checkbox" name="files[]"></td>
 				<td>{{$file->name}}</td>
 				<td>{{$file->size}}</td>
+				<td>{{ft($file->created_at)}}</td>
 				<td>
 					<a href="{{action('StudentController@getFileDownload',['id'=>$group->id,'groupFileId'=>$file->id])}}">
 						<i class="fa fa-download"></i>
