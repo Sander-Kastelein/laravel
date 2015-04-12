@@ -53,15 +53,15 @@ Route::group(['prefix'=>'teacher','before' => 'auth|teacher'], function()
     Route::post('/pe/{id}/addcomment','TeacherController@postAddComment');
     Route::get('pes','TeacherController@getPersonalEvaluations');
 
-    Route::get('user/{id}','TeacherController@getUser');
+    Route::get('student/{id}','TeacherController@getUser');
 
-    Route::get('users','TeacherController@getUsers');
-    Route::get('users/adduser','TeacherController@getAddUser');
-    Route::post('users/adduser','TeacherController@postAddUser');
-    Route::get('user/{id}/edit','TeacherController@getEditUser');
-    Route::post('user/{id}/edit','TeacherController@postEditUser');
+    Route::get('students','TeacherController@getStudents');
+    Route::get('students/adduser','TeacherController@getAddStudent');
+    Route::post('students/adduser','TeacherController@postAddStudent');
+    Route::get('student/{id}/edit','TeacherController@getEditStudent');
+    Route::post('student/{id}/edit','TeacherController@postEditStudent');
 
-
+    Route::get('setskill/{user}/{skill}/{level}','TeacherController@getEditSkills');
 
 });
 

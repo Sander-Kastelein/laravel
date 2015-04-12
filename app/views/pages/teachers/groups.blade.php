@@ -1,6 +1,5 @@
-<h1>Groepen</h1>
-<a class="btn btn-info" href="{{action('TeacherController@getNewGroup')}}">Nieuwe Groep</a>
-
+<h1>Groepen <a class="btn btn-info pull-right" href="{{action('TeacherController@getNewGroup')}}">Nieuwe Groep</a></h1>
+<br>
 <table id="groups" class="table table-hover">
 	<thead>
 		<tr>

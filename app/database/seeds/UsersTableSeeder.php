@@ -103,7 +103,7 @@ class UsersTableSeeder extends Seeder {
 
 
 		foreach($skills as $skill){
-			Skills::create($skill);
+			Skill::create($skill);
 		}
 
 

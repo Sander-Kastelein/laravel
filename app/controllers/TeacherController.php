@@ -192,10 +192,53 @@ Class TeacherController extends BaseController{
 
     public function getUser($id){
         $user = User::findOrFail($id);
+        if($user->is_teacher) return Redirect::to('/');
         $this->layout->page = View::make('pages.teachers.user',['user'=>$user]);
     }
 
+    public function getEditSkills($userId,$skillId,$level){
+        $skill = Skill::findOrFail($skillId);
+        $user = User::findOrFail($userId);
 
+        $su = SkillsUser::where('user_id',$user->id)->where('skill_id',$skill->id)->first();
+
+        if(!$su){
+            $su = new SkillsUser();
+            $su->user_id = $userId;
+            $su->skill_id = $skillId;
+            $su->level = $level;
+            $su->save();
+            return Response::json(['error'=>false]);
+        }else{
+            $su->level = $level;
+            $su->save();
+            return Response::json(['error'=>false]);
+        }
+        return Response::json(['error'=>'?']);
+    }
+
+    public function getStudents(){
+        $this->layout->page = View::make('pages.teachers.students')->with('students',User::getStudents());
+    }
+
+    public function getAddStudent(){
+        $this->layout->page = View::make('pages.teachers.add_student');
+    }
+
+    public function postAddStudent(){
+        try{
+            $user = new User();
+            $user->email = Input::get('email');
+            $user->name = Input::get('name');
+            $user->class = Input::get('class');
+            $user->password = Hash::make('qwerty');
+            $user->save();
+            return Redirect::action('TeacherController@getUser',['id'=>$user->id]);
+        }catch(Exception $e){ 
+            AlertRepo::add(new Alert('danger','Ongeldige invoer'));
+            return Redirect::action('TeacherController@getAddStudent');
+        }
+    }
 
 
 }

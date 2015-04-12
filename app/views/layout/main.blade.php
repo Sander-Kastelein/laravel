@@ -43,9 +43,15 @@ jQuery(function($){
         placement:"right"
     });
 
-     $('input[type=radio][name=bedStatus]').change(function(){
-        alert($(this).attr('name'));
-        alert($(this).attr('value'));
+     $('input[type=radio][name*=skill]').change(function(){
+        var name = $(this).attr('name');
+        var level = $(this).val();
+        var skill = name.split('skill_')[1];
+        var user = $(this).attr('data-userid');
+        console.log('/teacher/setskill/'+user+'/'+skill+'/'+level);
+        $.get('/teacher/setskill/'+user+'/'+skill+'/'+level,function(data){
+
+        });
      });
 });
 </script>

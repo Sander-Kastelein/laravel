@@ -1,12 +1,13 @@
 <form method="POST" action="{{action('TeacherController@postNewGroup')}}">
 Naam:	
-<input name="name" type="text" />
+<input class="form-control" name="name" type="text" />
 <br>
 Leerlingen:
 @include('components.forms.students')
 <br>
 Project:
 @include('components.forms.projects')
+<br>
 {{Form::token()}}
-<input type="submit">
+<input class="btn btn-success pull-right" value="Maak nieuwe groep" type="submit">
 </form>

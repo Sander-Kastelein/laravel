@@ -77,11 +77,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 
 	public function currentProject(){
-		return $this->groups[0]->project;
+		$group = $this->currentGroup();
+		return $group->project;
 	}
 
 	public function currentGroup(){
-		return $this->groups[0];
+		$group = (object)['name'=>'Geen','project'=>(object)['name'=>"Geen"]];
+		if(count($this->groups) != 0) $group = $this->groups[0];
+		return $group;
 	}
 
 	public function skills(){

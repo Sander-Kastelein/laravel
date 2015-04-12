@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		DB::raw('DROP DATABASE technasium_online;');
+		DB::raw('DROP DATABASE IF EXISTS technasium_online;');
 		DB::raw('CREATE DATABASE technasium_online;');
 
 

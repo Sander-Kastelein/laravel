@@ -1,6 +1,7 @@
-<h1>Projecten</h1>
-<a class="btn btn-info" href="{{action('TeacherController@getNewProject')}}">Nieuwe Project</a>
-
+<h1>Projecten
+<a class="btn btn-info pull-right" href="{{action('TeacherController@getNewProject')}}">Nieuwe Project</a>
+</h1>
+<br>
 <table id="projects" class="table table-hover">
 	<thead>
 		<tr>

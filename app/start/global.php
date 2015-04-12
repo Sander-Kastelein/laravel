@@ -98,8 +98,9 @@ function ft($dateTime){
 	return date('j-n-Y G:i', strtotime($dateTime));
 }
 
-
-URL::forceSchema("https");
+if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN') {
+	URL::forceSchema("https");
+}
 
 require app_path().'/filters.php';
 

@@ -1,8 +1,18 @@
 <h2>{{$user->name}}</h2>
 
-Huidige project: <a href="{{action('TeacherController@getProject',['id'=>$user->currentProject()->id])}}">{{$user->currentProject()->name}}</a><br>
-Huidige groep: <a href="{{action('TeacherController@getGroup',['id'=>$user->currentGroup()->id])}}">{{$user->currentGroup()->name}}</a>
+Huidige project: 
+@if($user->currentProject()->name != 'Geen')
+<a href="{{action('TeacherController@getProject',['id'=>$user->currentProject()->id])}}">{{$user->currentProject()->name}}</a><br>
+@else
+{{$user->currentProject()->name}}<br>
+@endif
 
+Huidige groep: 
+@if($user->currentGroup()->name != 'Geen')
+<a href="{{action('TeacherController@getGroup',['id'=>$user->currentGroup()->id])}}">{{$user->currentGroup()->name}}</a><br>
+@else
+{{$user->currentGroup()->name}}<br>
+@endif
 
 <h3>Persoonlijke verslagen <span class="badge">{{count($user->personalEvaluations)}}</span></h3>
 
