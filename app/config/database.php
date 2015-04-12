@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'technasium-online',
+			'database'  => 'technasium_online',
 			'username'  => 'root',
 			'password'  => 'qwerty', //Ja ja, geen wachtwoorden op GitHub,  Ja ja ja "qwerty" is een afschuwelijk wachtwoord. Maar dit is een DEMO, niet een echte applicatie :/
 			'charset'   => 'utf8',
