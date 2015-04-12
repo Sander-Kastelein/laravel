@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'sqlite',
+	'default' => 'mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'forge',
-			'username'  => 'forge',
-			'password'  => '',
+			'database'  => 'technasium-online',
+			'username'  => 'root',
+			'password'  => 'qwerty', //Ja ja, geen wachtwoorden op GitHub,  Ja ja ja "qwerty" is een afschuwelijk wachtwoord. Maar dit is een DEMO, niet een echte applicatie :/
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
