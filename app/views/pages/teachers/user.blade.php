@@ -20,3 +20,6 @@ Huidige groep: <a href="{{action('TeacherController@getGroup',['id'=>$user->curr
   @endforeach
 </ul>
 
+
+@include('components.skills')
+
