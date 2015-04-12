@@ -99,4 +99,9 @@ function ft($dateTime){
 }
 
 
+if (App::environment('remote')) {
+    URL::forceSchema('https');
+}
+
 require app_path().'/filters.php';
+

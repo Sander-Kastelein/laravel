@@ -55,6 +55,14 @@ Route::group(['prefix'=>'teacher','before' => 'auth|teacher'], function()
 
     Route::get('user/{id}','TeacherController@getUser');
 
+    Route::get('users','TeacherController@getUsers');
+    Route::get('users/adduser','TeacherController@getAddUser');
+    Route::post('users/adduser','TeacherController@postAddUser');
+    Route::get('user/{id}/edit','TeacherController@getEditUser');
+    Route::post('user/{id}/edit','TeacherController@postEditUser');
+
+
+
 });
 
 /*----------------------------------------------------------------------------------------------------------------------
