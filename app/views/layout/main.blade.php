@@ -39,7 +39,7 @@ tinymce.init({
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 });
 jQuery(function($){
-    $('.tooltip').tooltip({
+    $('.custom-tooltip').tooltip({
         placement:"right"
     });
 });
