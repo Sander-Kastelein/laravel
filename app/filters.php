@@ -17,15 +17,12 @@ App::before(function($request)
 		View::share('user',Auth::user());
 	}
 
-	App::before(function($request){
-		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		}else{
-			if(!Request::secure()){
-		    	return Redirect::secure(Request::path());
-		    }
-		}
-	});
-
+	if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+	}else{
+		if(!Request::secure()){
+	    	return Redirect::secure(Request::path());
+	    }
+	}
 
 });
 
