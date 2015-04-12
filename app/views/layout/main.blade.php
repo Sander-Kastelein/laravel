@@ -42,6 +42,11 @@ jQuery(function($){
     $('.custom-tooltip').tooltip({
         placement:"right"
     });
+
+     $('input[type=radio][name=bedStatus]').change(function(){
+        alert($(this).attr('name'));
+        alert($(this).attr('value'));
+     });
 });
 </script>
 </body>
