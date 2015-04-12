@@ -67,7 +67,6 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th></th>
 			<th>Bestandnaam</th>
 			<th>Groote</th>
 			<th>Ge&uuml;pload op</th>
@@ -77,7 +76,6 @@
 	<tbody>
 		@foreach($group->files as $file)
 			<tr>
-				<td><input type="checkbox" name="files[]"></td>
 				<td>{{$file->name}}</td>
 				<td>{{$file->size}}</td>
 				<td>{{ft($file->created_at)}}</td>
@@ -96,7 +94,6 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th></th>
 			<th>Titel</th>
 			<th>Datum</th>
 		</tr>
@@ -104,7 +101,6 @@
 	<tbody>
 		@foreach($group->getMyPersonalEvaluations() as $pe)
 			<tr>
-				<td><input type="checkbox" name="files[]"></td>
 				<td><a href="{{action('StudentController@getPersonalEvaluation',['id'=>$pe->id])}}">{{$pe->title}}</a></td>
 				<td>{{ft($pe->created_at)}}</td>
 			</tr>
