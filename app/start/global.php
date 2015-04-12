@@ -99,7 +99,9 @@ function ft($dateTime){
 }
 
 if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN') {
-	URL::forceSchema("https");
+	if(str_contains(php_uname(),'kstl')){
+		URL::forceSchema("https");
+	}
 }
 
 require app_path().'/filters.php';
