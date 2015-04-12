@@ -174,7 +174,7 @@ Class TeacherController extends BaseController{
     }
 
     public function getPersonalEvaluations(){
-        $this->layout->page = View::make('pages.teachers.pes')->with('pes',PersonalEvaluations::all());
+        $this->layout->page = View::make('pages.teachers.pes')->with('pes',PersonalEvaluation::all());
     }
 
     public function postAddComment($id){
