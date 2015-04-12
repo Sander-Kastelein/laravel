@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
+		Db::raw('DROP DATABASE technasium_online;');
+		Db::raw('CREATE DATABASE technasium_online;');
+
+
 		Artisan::call('migrate:refresh');
 
 
