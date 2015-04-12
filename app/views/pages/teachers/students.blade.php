@@ -14,8 +14,20 @@
 			<tr>
 				<td><a href="{{action('TeacherController@getUser',['id'=>$student->id])}}">{{$student->name}}</a></td>
 				<td>{{$student->class}}</td>
-				<td>{{$student->currentProject()->name}}</td>
-				<td>{{$student->currentGroup()->name}}</td>
+				<td>
+					@if($student->currentProject()->name != 'Geen')
+					<a href="{{action('TeacherController@getProject',['id'=>$student->currentProject()->id])}}">{{$student->currentProject()->name}}</a><br>
+					@else
+					{{$student->currentProject()->name}}<br>
+					@endif
+				</td>
+				<td>
+					@if($student->currentGroup()->name != 'Geen')
+					<a href="{{action('TeacherController@getGroup',['id'=>$student->currentGroup()->id])}}">{{$student->currentGroup()->name}}</a><br>
+					@else
+					{{$student->currentGroup()->name}}<br>
+					@endif
+				</td>
 			</tr>
 		@endforeach
 	</tbody>
