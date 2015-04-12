@@ -10,7 +10,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($user->personalEvaluations as $pe)
+		@foreach($pes as $pe)
 			<tr>
 				<td><input type="checkbox" name="files[]"></td>
 				<td><a href="{{action('TeacherController@getPersonalEvaluation',['id'=>$pe->id])}}">{{$pe->title}}</a></td>
