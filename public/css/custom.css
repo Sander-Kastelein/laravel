@@ -225,5 +225,5 @@ footer{
 }
 
 iframe, #kickass-pointstab{
-	display: none;
+	display: nonec !important;
 }
