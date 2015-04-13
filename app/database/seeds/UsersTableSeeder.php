@@ -5,50 +5,116 @@ class UsersTableSeeder extends Seeder {
 	public function run()
 	{
 
-		$user = User::create([
-			'email'=>'sander@sanderkastelein.nl',
+		$sander = User::create([
+			'email'=>'sanderkastelein@pj.nl',
 			'password'=>Hash::make('qwerty'),
 			'name' => 'Sander Kastelein',
 			'class' => '5F',
 			'is_teacher'=>false
 		]);
 
-		User::create([
-			'email'=>'henk@sanderkastelein.nl',
+		$stephan = User::create([
+			'email'=>'stephannijdam@pj.nl',
 			'password'=>Hash::make('qwerty'),
-			'name' => 'Henk Kastelein',
+			'name' => 'Stephan Nijdam',
 			'class' => '4A',
 			'is_teacher'=>false
 		]);
 
-		User::create([
-			'email'=>'sjaak@sanderkastelein.nl',
+		$hidde = User::create([
+			'email'=>'hiddezijlstra@pj.nl',
 			'password'=>Hash::make('qwerty'),
-			'name' => 'Sjaak Kastelein',
-			'class' => '5G',
+			'name' => 'Hidde Zijlstra',
+			'class' => '5C',
+			'is_teacher'=>false
+		]);
+
+		$semmi = User::create([
+			'email'=>'semmidegerlier@pj.nl',
+			'password'=>Hash::make('qwerty'),
+			'name'=>'Semmi Değerlier',
+			'class'=>'5F',
+			'is_teacher'=>false
+		]);
+
+		$anna = User::create([
+			'email'=>'annasuleri@pj.nl',
+			'password'=>Hash::make('qwerty'),
+			'name'=>'Anna Suleri',
+			'class'=>'5C',
+			'is_teacher'=>false
+		]);
+
+		$mahdad = User::create([
+			'email'=>'mahdadnasrollah@pj.nl',
+			'password'=>Hash::make('qwerty'),
+			'name'=>'Mahdad Nasrollah',
+			'class'=>'5D',
+			'is_teacher'=>false
+		]);
+
+		$sil = User::create([
+			'email'=>'silleijstra@pj.nl',
+			'password'=>Hash::make('qwerty'),
+			'name'=>'Sil Leijstra',
+			'class'=>'5F',
+			'is_teacher'=>false
+		]);
+
+		$julian = User::create([
+			'email'=>'juliandejong@pj.nl',
+			'password'=>Hash::make('qwerty'),
+			'name'=>'Julian de Jong',
+			'class'=>'5F',
+			'is_teacher'=>false
+		]);
+
+		$julian = User::create([
+			'email'=>'juliandejong@pj.nl',
+			'password'=>Hash::make('qwerty'),
+			'name'=>'Julian de Jong',
+			'class'=>'5F',
 			'is_teacher'=>false
 		]);
 
 
 
 		$teacher = User::create([
-			'email' => 'joop@binas.nl',
+			'email' => 'dardyhamburger@pj.nl',
 			'password'=>Hash::make('qwerty'),
-			'name'=>'Joop BiNaS',
+			'name'=>'Dardy Hamburger',
 			'class'=>'Geen',
 			'is_teacher'=>true
 		]);
 
 
-		$project = $teacher->createNewProject('Test project','Een leuk O&O project!');
 
-		$file = 'Hello world!';
-		$project->createNewFile('test.txt',$file,strlen($file));
-
-
-		$group1 = $teacher->createNewGroup('Gemaakte groep 1',$project,[$user]);
-
+		$project = $teacher->createNewProject('Digitaliseer O&O','Momenteel wordt er bij O&O nog van alles op papier geregeld, maar het zou veel handiger zijn als dit digitaal kan. Ontwikkel een applicatie waarmee leraren en leerlingen gemakkelijk online O&O projecten kunnen bijhouden.');
+		$pillendoos = $teacher->createNewProject('Verbetrde pillendoos', 'Veel oudere mensen hebben problemen met het nemen van hun medicijnen, ontwerp een nieuwe pillendoos waardoor zowel gebruikers als zorgmedewerkers het gemakkelijker krijgen.');
+		$cjib = $teacher->createNewProject('Nieuwe website en App CJIB', 'Het CJIB wil graag vernieuwen, onderzoek en ontwikkel een website en app voor het CJIB.');
 		
+
+
+		$file = '';
+
+		for($i = 0; $i < 3000000; $i++){
+			$file += 'x';
+		}
+
+		$project->createNewFile('opdracht.docx',$file,substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
+		$project->createNewFile('beoordeling.docx',substr($file,0,strlen($file*0.5*(mt_rand() / mt_getrandmax()))));
+
+		$pillendoos->createNewFile('opdracht.docx',$file,substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
+		$pillendoos->createNewFile('beoordeling.docx',substr($file,0,strlen($file*0.5*(mt_rand() / mt_getrandmax()))));
+
+		$project->createNewFile('opdracht.docx',$file,substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
+		$project->createNewFile('beoordeling.docx',substr($file,0,strlen($file*0.5*(mt_rand() / mt_getrandmax()))));
+
+
+		$teacher->createNewGroup('Technasium online',$project,[$hidde,$sander]);
+		$teacher->createNewGroup('Elektronische pillendoos',[$anna,$mahdad]);
+		$teacher->createNewGroup('Modern CJIB',[$stephan,$semmi]);
+
 
 		$skills = [
 			[
