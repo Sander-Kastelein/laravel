@@ -95,6 +95,7 @@ App::after(function($request,$response){
 */
 
 function ft($dateTime){
+	$dateTime->modify("+2 hours");
 	return date('j-n-Y G:i', strtotime($dateTime));
 }
 
