@@ -27,6 +27,7 @@
 			<th>Bestandnaam</th>
 			<th>Groote</th>
 			<th>Ge&uuml;pload op</th>
+			<th>Ge&uuml;pload door</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -36,6 +37,7 @@
 				<td>{{$file->name}}</td>
 				<td>{{formatBytes($file->size)}}</td>
 				<td>{{ft($file->created_at)}}</td>
+				<td>{{$file->owner->name}}</td>
 				<td>
 					<a href="{{action('TeacherController@getFileDownload',['id'=>$group->id,'groupFileId'=>$file->id])}}">
 						<i class="fa fa-download"></i>
