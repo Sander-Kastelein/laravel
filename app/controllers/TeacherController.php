@@ -147,7 +147,7 @@ Class TeacherController extends BaseController{
         }
         $file = Input::file('file');
 
-        $hidden = (Input::get('hidden')==='on');
+        $hidden = false;
         $size = $file->getSize();
         $mime = $file->getMimeType();
         $name = $file->getClientOriginalName();
@@ -239,6 +239,23 @@ Class TeacherController extends BaseController{
             return Redirect::action('TeacherController@getAddStudent');
         }
     }
+
+    public function getFileDownload($id,$groupFileId){
+        $file = GroupFile::findOrFail($groupFileId);
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: '.$file->mime);
+        header('Content-Disposition: attachment; filename="'.$file->name.'"');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: '.$file->size);
+        die($file->file);
+        
+    }
+
+
 
 
 }

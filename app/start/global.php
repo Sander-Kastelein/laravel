@@ -104,5 +104,15 @@ if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN') {
 	}
 }
 
+
+function formatBytes($bytes) { 
+    if($bytes < 1024){
+    	return $bytes . " bytes";
+    }else{
+    	return round($bytes/1024) . " KB";
+    }
+} 
+
+
 require app_path().'/filters.php';
 

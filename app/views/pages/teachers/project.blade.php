@@ -41,7 +41,7 @@ Beschrijving:
 			<tr>
 				<td><input type="checkbox" name="files[]"></td>
 				<td>{{$file->name}}</td>
-				<td>{{$file->size}}</td>
+				<td>{{formatBytes($file->size)}}</td>
 				<td>
 					<a href="{{action('TeacherController@getProjectFileDownload',['id'=>$file->id])}}">
 						<i class="fa fa-download"></i>

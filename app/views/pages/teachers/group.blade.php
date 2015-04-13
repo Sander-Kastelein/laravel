@@ -20,6 +20,33 @@
 	</tbody>
 </table>
 
+<h2>Groep bestanden</h2>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Bestandnaam</th>
+			<th>Groote</th>
+			<th>Ge&uuml;pload op</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach($group->files as $file)
+			<tr>
+				<td>{{$file->name}}</td>
+				<td>{{formatBytes($file->size)}}</td>
+				<td>{{ft($file->created_at)}}</td>
+				<td>
+					<a href="{{action('TeacherController@getFileDownload',['id'=>$group->id,'groupFileId'=>$file->id])}}">
+						<i class="fa fa-download"></i>
+					</a>
+				</td>
+			</tr>
+		@endforeach
+	</tbody>
+</table>
+
+
 <h2>Docenten</h2>
 <table class="table table-hover">
 	<thead>

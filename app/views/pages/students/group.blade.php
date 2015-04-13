@@ -50,7 +50,7 @@
 			<tr>
 				<td><input type="checkbox" name="files[]"></td>
 				<td>{{$file->name}}</td>
-				<td>{{$file->size}}</td>
+				<td>{{formatBytes($file->size)}}</td>
 				<td>
 					<a href="{{action('StudentController@getProjectFileDownload',['id'=>$file->id])}}">
 						<i class="fa fa-download"></i>
@@ -77,7 +77,7 @@
 		@foreach($group->files as $file)
 			<tr>
 				<td>{{$file->name}}</td>
-				<td>{{$file->size}}</td>
+				<td>{{formatBytes($file->size)}}</td>
 				<td>{{ft($file->created_at)}}</td>
 				<td>
 					<a href="{{action('StudentController@getFileDownload',['id'=>$group->id,'groupFileId'=>$file->id])}}">

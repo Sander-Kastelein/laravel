@@ -62,6 +62,8 @@ Route::group(['prefix'=>'teacher','before' => 'auth|teacher'], function()
     Route::post('student/{id}/edit','TeacherController@postEditStudent');
 
     Route::get('setskill/{user}/{skill}/{level}','TeacherController@getEditSkills');
+    Route::get('/group/{id}/download/{groupFileId}','TeacherController@getFileDownload');
+
 
 });
 
