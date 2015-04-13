@@ -10,9 +10,23 @@ use \Technasium\Alert;
 Class StudentController extends BaseController{
 
     public function getDashboard(){
-        $this->layout->page = View::make('pages.students.dashboard');
-    }
+        $user = Auth::user();
+        $amountOfComments = 0;
+        $amountOfFiles = 0;
+        $pesIds = [];
+        $pes = PersonalEvaluation::where('user_id',$user->id)->get();
+        foreach($pes as $pe){
+            $pesIds[] = $pe->id;
+            $amountOfComments++;
+        }
 
+        $amountOfFiles = GroupFile::where('user_id',$user->id)->count();
+
+
+        $comment = PersonalEvaluationComment::whereIn('personal_evaluation_id',$pesIds)->orderBy('created_at','DESC')->first();
+        $this->layout->page = View::make('pages.students.dashboard')->with('comment',$comment)->with('amountOfComments',$amountOfComments)->with('amountOfFiles',$amountOfFiles);
+    }
+    
     public function getGroups(){
     	$groups = Auth::user()->groups;
     	$this->layout->page = View::make('pages.students.groups')->with('groups',$groups);
