@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder {
 			'email'=>'stephannijdam@pj.nl',
 			'password'=>Hash::make('qwerty'),
 			'name' => 'Stephan Nijdam',
-			'class' => '4A',
+			'class' => '5F',
 			'is_teacher'=>false
 		]);
 
@@ -83,7 +83,7 @@ class UsersTableSeeder extends Seeder {
 
 
 		$project = $teacher->createNewProject('Digitaliseer O&O','Momenteel wordt er bij O&O nog van alles op papier geregeld, maar het zou veel handiger zijn als dit digitaal kan. Ontwikkel een applicatie waarmee leraren en leerlingen gemakkelijk online O&O projecten kunnen bijhouden.');
-		$pillendoos = $teacher->createNewProject('Verbetrde pillendoos', 'Veel oudere mensen hebben problemen met het nemen van hun medicijnen, ontwerp een nieuwe pillendoos waardoor zowel gebruikers als zorgmedewerkers het gemakkelijker krijgen.');
+		$pillendoos = $teacher->createNewProject('Verbeterde pillendoos', 'Veel oudere mensen hebben problemen met het nemen van hun medicijnen, ontwerp een nieuwe pillendoos waardoor zowel gebruikers als zorgmedewerkers het gemakkelijker krijgen.');
 		$cjib = $teacher->createNewProject('Nieuwe website en App CJIB', 'Het CJIB wil graag vernieuwen, onderzoek en ontwikkel een website en app voor het CJIB.');
 		$getijden = $teacher->createNewProject('Groene energie waddenzee', 'Eneco wil groene enrgie opwekken in de waddenzee, ontwikkel apparaat waarmee efficient groene energie kan worden opgebracht in de waddenzee.');
 

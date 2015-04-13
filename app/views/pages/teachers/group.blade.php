@@ -1,5 +1,6 @@
 <h1>{{$group->name}}</h1>
 
+<a href="{{action('TeacherController@getProject',['id'=>$group->project->id])}}">Ga naar het project {{$group->project->name}}</a>
 
 <h2>Leerlingen</h2>
 <table class="table table-hover">
