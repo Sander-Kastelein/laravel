@@ -18,3 +18,8 @@
 		@endforeach
 	</tbody>
 </table>
+
+@if(count($pes) == 0)
+Nog geen persoonlijke verslagen
+@endif
+

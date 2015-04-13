@@ -30,6 +30,10 @@ Huidige groep:
   @endforeach
 </ul>
 
+@if(count($user->personalEvaluations)) == 0)
+Nog geen persoonlijke verslagen
+@endif
+
 
 @include('components.skills')
 

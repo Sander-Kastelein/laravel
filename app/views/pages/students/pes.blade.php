@@ -18,3 +18,7 @@
 		@endforeach
 	</tbody>
 </table>
+
+@if(count($user->personalEvaluations)) == 0)
+Nog geen persoonlijke verslagen
+@endif
