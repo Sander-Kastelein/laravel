@@ -69,13 +69,6 @@ class UsersTableSeeder extends Seeder {
 			'is_teacher'=>false
 		]);
 
-		$julian = User::create([
-			'email'=>'juliandejong@pj.nl',
-			'password'=>Hash::make('qwerty'),
-			'name'=>'Julian de Jong',
-			'class'=>'5F',
-			'is_teacher'=>false
-		]);
 
 
 
@@ -101,19 +94,19 @@ class UsersTableSeeder extends Seeder {
 			$file += 'x';
 		}
 
-		$project->createNewFile('opdracht.docx',$file,substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
+		$project->createNewFile('opdracht.docx',substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
 		$project->createNewFile('beoordeling.docx',substr($file,0,strlen($file*0.5*(mt_rand() / mt_getrandmax()))));
 
-		$pillendoos->createNewFile('opdracht.docx',$file,substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
+		$pillendoos->createNewFile('opdracht.docx',substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
 		$pillendoos->createNewFile('beoordeling.docx',substr($file,0,strlen($file*0.5*(mt_rand() / mt_getrandmax()))));
 
-		$project->createNewFile('opdracht.docx',$file,substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
+		$project->createNewFile('opdracht.docx',substr($file,0,strlen($file*2.5*(mt_rand() / mt_getrandmax()))));
 		$project->createNewFile('beoordeling.docx',substr($file,0,strlen($file*0.5*(mt_rand() / mt_getrandmax()))));
 
 
 		$teacher->createNewGroup('Technasium online',$project,[$hidde,$sander]);
-		$teacher->createNewGroup('Elektronische pillendoos',[$anna,$mahdad]);
-		$teacher->createNewGroup('Modern CJIB',[$stephan,$semmi]);
+		$teacher->createNewGroup('Elektronische pillendoos',$pillendoos,[$anna,$mahdad]);
+		$teacher->createNewGroup('Modern CJIB',$cjib,[$stephan,$semmi]);
 
 
 		$skills = [

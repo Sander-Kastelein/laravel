@@ -11,7 +11,8 @@ Class Project extends Eloquent{
 		return $this->hasMany('ProjectFile');
 	}
 
-	function createNewFile($name,$binary,$size,$hidden=false,$mime=false){
+	function createNewFile($name,$binary,$size=false,$hidden=false,$mime=false){
+		if(!$size) $size = strlen($binary);
 		$file = new ProjectFile();
 		$file->project_id = $this->id;
 		$file->name = $name;
