@@ -39,7 +39,6 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th></th>
 			<th>Bestandnaam</th>
 			<th>Groote</th>
 			<th></th>
@@ -48,7 +47,6 @@
 	<tbody>
 		@foreach($group->project->files as $file)
 			<tr>
-				<td><input type="checkbox" name="files[]"></td>
 				<td>{{$file->name}}</td>
 				<td>{{formatBytes($file->size)}}</td>
 				<td>
