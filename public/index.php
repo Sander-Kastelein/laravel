@@ -18,6 +18,8 @@
 |
 */
 
+date_default_timezone_set('Europe/Amsterdam');
+
 require __DIR__.'/../bootstrap/autoload.php';
 
 /*
