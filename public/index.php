@@ -18,7 +18,7 @@
 |
 */
 
-date_default_timezone_set('Europe/Amsterdam');
+date_default_timezone_set('Europe/Moscow');
 
 require __DIR__.'/../bootstrap/autoload.php';
 
