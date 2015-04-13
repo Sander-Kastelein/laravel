@@ -10,4 +10,9 @@ Class GroupFile extends Eloquent{
 		return $this->BelongsTo('User');
 	}
 
+
+	public function gOwner(){
+		return User::find($this->user_id);
+	}
+
 }

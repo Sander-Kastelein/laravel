@@ -78,7 +78,7 @@
 				<td>{{$file->name}}</td>
 				<td>{{formatBytes($file->size)}}</td>
 				<td>{{ft($file->created_at)}}</td>
-				<td>{{$file->owner->name}}</td>
+				<td>{{$file->gOwner()->name}}</td>
 				<td>
 					<a href="{{action('StudentController@getFileDownload',['id'=>$group->id,'groupFileId'=>$file->id])}}">
 						<i class="fa fa-download"></i>
