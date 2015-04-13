@@ -7,7 +7,7 @@ Class GroupFile extends Eloquent{
 	}
 
 	public function owner(){
-		return $this->hasOne('User');
+		return $this->BelongsTo('User');
 	}
 
 }
